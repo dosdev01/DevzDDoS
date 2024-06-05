@@ -6,8 +6,8 @@ import time as tm
 from keep_alive import keep_alive
 
 keep_alive()
-bot = telebot.TeleBot('7345507165:AAHrfsA03J-ewPL3TCrdK3TOasJpiUZcybA')
-admin_id = {"1027596128"}
+bot = telebot.TeleBot('7047641153:AAF7pMLPClykChDkhE89G2FN1qqS5iH-UcA')
+admin_id = {"1875300132"}
 USER_FILE = "users.txt"
 LOG_FILE = "log.txt"
 
