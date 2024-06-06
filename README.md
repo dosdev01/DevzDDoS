@@ -20,8 +20,8 @@ BGMI-D-DOS is a powerful Denial of Service (DoS) tool designed to target Battleg
 ### Prerequisites
 
 * A Linux VPS server with a valid IP address
-* Telegram account with the @PANEL_EXPERT handle
-* Telegram bot token for the @BGMI_D_DoS_RoBot bot
+* Telegram account with the @Devz_on handle
+* Telegram bot token for the @DevzDDoS bot
 
 ### Deployment
 
@@ -53,8 +53,8 @@ This tool is for testing and demonstration purposes only. It is not intended to 
 **Contributors**
 -------------
 
-* [@PANEL_EXPERT]('https://telegram.me/bhoothihu') (Developer)
-* [@DARKESPYT]('https://telegram.me/devz_on') (Dev Channel)
+* [@BHOOTHIHU]('https://telegram.me/bhoothihu') (Developer)
+* [@DEVZ_ON]('https://telegram.me/devz_on') (Dev Channel)
 
 **License**
 ---------
@@ -64,4 +64,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 **Contact**
 ---------
 
-If you have any questions or need help with the tool, feel free to reach out to @PANEL_EXPERT on Telegram.
+If you have any questions or need help with the tool, feel free to reach out to @bhoothihu on Telegram.
